@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %}ForumApp{% endblock %}</title>
+</head>
+
+<body>
+    <div id="container">
+        <div id="menu">
+            {% block nav-global %}
+            {% endblock %}
+        </div>
+
+        <div id="content"> {% block content %}{% endblock %} </div>
+    </div>
+
+</body>
+</html>
