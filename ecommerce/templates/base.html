@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- Bootstrap -->
+        <link href="{% static 'css/bootstrap-fluid-adj.css' %}" rel="stylesheet">
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+  		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+        <title>Ecommerce - {% block title %}How to Ecommerce with Django!{% endblock %}</title>
+    </head>
+    <body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+	  <div class="container-fluid">
+	    <div class="navbar-header">
+	      <a class="navbar-brand" href="/product">Eccommerce</a>
+	    </div>
+	    <div>
+	      <ul class="nav navbar-nav">
+	        <li class="active"><a href="/product">Home</a></li>
+	        <li><a href="/product/search/">Search</a></li>
+	        <li><a href="/cart">Cart
+	        	<span class="badge">
+	        	{% if not request.session.items_total %} 
+	        		0 
+	        	{% else %} 
+	        		{{ request.session.items_total }} 
+	        	{% endif%}
+	        	</span>
+	        	</a>
+	        </li>
+	        <li><a href="#">Page 3</a></li>
+	      </ul>
+	    </div>
+	  </div>
+	</nav>
+	
+	{% block body_block %}
+	{% endblock %}
+    </body>
+</html>

@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{%load static %}
+{% block title %}Welcome to Product!{% endblock %}
+
+{% block body_block %}
+<div class="hero-unit">
+	{% if products %}
+		<div class='row'>
+	        {% for product in products %}
+	        <div class='col-sm-4'>
+				<div class="thumbnail">
+	        	{% for item in product.productimage_set.all %}
+	        		<a href="/product/view_product/{{product.slug}}"><img class='img-responsive' src="{{MEDIA_URL}}{{item.image}}"/></a>
+	        	{% endfor %}
+	        	<div class="caption">
+	        		<ul>
+			        <li>{{product.title}}</li>
+			        <li>{{product.price}}</li>
+			        </ul>
+			    </div>
+			</div>
+	     </div>
+		{% cycle "" "" "</div><br/><hr/><div class='row'>" %}
+	    {%endfor%}
+	    </div> 	
+     {% else %}
+     	<p>There are no products</p>
+     {% endif %}
+</div>
+{% endblock %}
